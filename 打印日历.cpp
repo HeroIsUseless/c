@@ -1,23 +1,23 @@
 #include <stdio.h>
 #define BYEAR 1949
 #define EYEAR 2000
-//ÁÐ³ö´ÓBYEARµ½EYEARÈÕÆÚµÄÈÕÀú
-//¸ñÊ½£ºÒ»¸öÔÂÒ»¸ö¶Î£¬¹²ËÄÁÐÈýÐÐÎªÒ»Äê£¬ÔÙ¸ôÒ»ÐÐÊÇÏÂÒ»Äê£¬»¨ÀïºúÉÚµÄ¶«Î÷ÓÐºÜ¶à£¬ÏÈ°Ñ¹ý³ÌÊµÏÖÁËÔÙËµÆäËûµÄ
+//åˆ—å‡ºä»ŽBYEARåˆ°EYEARæ—¥æœŸçš„æ—¥åŽ†
+//æ ¼å¼ï¼šä¸€ä¸ªæœˆä¸€ä¸ªæ®µï¼Œå…±å››åˆ—ä¸‰è¡Œä¸ºä¸€å¹´ï¼Œå†éš”ä¸€è¡Œæ˜¯ä¸‹ä¸€å¹´ï¼ŒèŠ±é‡Œèƒ¡å“¨çš„ä¸œè¥¿æœ‰å¾ˆå¤šï¼Œå…ˆæŠŠè¿‡ç¨‹å®žçŽ°äº†å†è¯´å…¶ä»–çš„
 int lmonth[12] = {31,29,31,30,31,30,31,31,30,31,30,31};
 void printDate();
-int month[4][35] = {{0}};//Ò»¹²´Ó1-4¸öÔÂ
+int month[4][35] = {{0}};//ä¸€å…±ä»Ž1-4ä¸ªæœˆ
 int main()
 {
     FILE *pFile = fopen("date.txt","w");
-    //ÅÐ¶ÏÊÇÈòÄê»¹ÊÇÆ½Äê
-    for(int y=BYEAR; y<=EYEAR; y++)//ÓÐ¶àÉÙÄê
+    //åˆ¤æ–­æ˜¯é—°å¹´è¿˜æ˜¯å¹³å¹´
+    for(int y=BYEAR; y<=EYEAR; y++)//æœ‰å¤šå°‘å¹´
     {
         isRunNian(y);
-        for(int m=0; m<3; m++)//Èý´óÁÐ
+        for(int m=0; m<3; m++)//ä¸‰å¤§åˆ—
         {
-            printDate();//Êä³öºº×Ö
-            getData(y,m);//°ÑÈý¸öÊý×éÌîÂú
-            printDay();//Êä³ö£¬ÖÃ0
+            printDate();//è¾“å‡ºæ±‰å­—
+            getData(y,m);//æŠŠä¸‰ä¸ªæ•°ç»„å¡«æ»¡
+            printDay();//è¾“å‡ºï¼Œç½®0
         }
     }
     fclose(pFile);
@@ -32,43 +32,43 @@ void printDate()
             switch(b)
             {
                 case 0:
-                    fprintf(pFile, "ÈÕ ");
+                    fprintf(pFile, "æ—¥ ");
                     break;
                 case 1:
-                    fprintf(pFile, "Ò» ");
+                    fprintf(pFile, "ä¸€ ");
                     break;
                 case 2:
-                    fprintf(pFile, "¶þ ");
+                    fprintf(pFile, "äºŒ ");
                     break;
                 case 3:
-                    fprintf(pFile, "Èý ");
+                    fprintf(pFile, "ä¸‰ ");
                     break;
                 case 4:
-                    fprintf(pFile, "ËÄ ");
+                    fprintf(pFile, "å›› ");
                     break;
                 case 5:
-                    fprintf(pFile, "Îå ");
+                    fprintf(pFile, "äº” ");
                     break;
                 case 6:
-                    fprintf(pFile, "Áù   ");
+                    fprintf(pFile, "å…­   ");
                     break;
             }
         }
     }
     fprintf(pFile,"\n");
 }
-void getData(int y, int m)//mÊÇ´Ó0¿ªÊ¼µÄ
+void getData(int y, int m)//mæ˜¯ä»Ž0å¼€å§‹çš„
 {
     int mo = 0;
-    int theFirstDay = 0;//´ú±íµÄÊÇ1ºÅÊÇÊý×éÀïµÄµÚ¼¸Î»
+    int theFirstDay = 0;//ä»£è¡¨çš„æ˜¯1å·æ˜¯æ•°ç»„é‡Œçš„ç¬¬å‡ ä½
     for(int i=0; i<4; i++)
     {
         mo = m*4+i+1;
         theFirstDay = getTED(y,mo)
         for(int j=0; j<lmonth[mo-1]; j++)
-        {//ÎÒÜ³»¹ÒªÓÐÒ»²ãÑ­»·
-            month[i][theFirstDay+j]=j+1;//°¥Ñ½ÎÒµÄ¸öÌì
-        }//ÎÒ¸Ð¾õ²î²»¶àÁË
+        {//æˆ‘è‰¹è¿˜è¦æœ‰ä¸€å±‚å¾ªçŽ¯
+            month[i][theFirstDay+j]=j+1;//å“Žå‘€æˆ‘çš„ä¸ªå¤©
+        }//æˆ‘æ„Ÿè§‰å·®ä¸å¤šäº†
     }
 }
 void printDay()
@@ -85,7 +85,7 @@ void isRunNian(int y)
 {
      if((y%100!=0 && y%4==0) || (y%400==0))
     {
-        lmonth[1] = 29;//¶þÔÂ¾ÍÊÇÐòºÅ12
+        lmonth[1] = 29;//äºŒæœˆå°±æ˜¯åºå·12
     }
     else
     {
