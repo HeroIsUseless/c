@@ -1,2 +1,2 @@
-# usaco
-usaco codes
+# c
+c codes
