@@ -38,17 +38,12 @@ DynamicArray* DynamicArray_new(){
 }
 void DynamicArray_insert(DynamicArray* this, size_t pos, const Elem* v){
     int i;
-    if(this->size == 0){
-        this->data[0] = *v;
-        this->size++;
-    }else{
-        if(pos >= this->size) return;
-        while(this->size >= this->capacity)
-            DynamicArray_recapacity(this, this->capacity * 2);
-        for(i=this->size; i>pos; i--)
-            this->data[i] = this->data[i-1];
-        this->data[pos] = *v; this->size++;
-    }
+    if(pos >= this->size) return;
+    while(this->size >= this->capacity)
+        DynamicArray_recapacity(this, this->capacity * 2);
+    for(i=this->size; i>pos; i--)
+        this->data[i] = this->data[i-1];
+    this->data[pos] = *v; this->size++;
 }
 Elem DynamicArray_erase(DynamicArray* this, size_t pos){
     int i, res;
