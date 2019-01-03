@@ -28,7 +28,7 @@ int main(void)
         bool result = true;  //设定了一个res
         //看原理是什么，找到原理就行了
         for (int i = 0; i < maxSequence; i++) {//同样，每次只判断一个是非常通俗的方式
-            if (sequence[i]>maxNum)  {//不合理  
+            if (sequence[i]>maxNum)  {//不合理，嗯，这个没有从原理上判定，所以并不是很好
                 result = false;  
                 break;  
             }  
