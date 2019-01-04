@@ -54,24 +54,15 @@ int main()
 //通过输入一个值，找到它所在的位置，一个逆向的过程
 //做法是
 Position Find(HashTable H, ElementType Key){
-    Position p,m;//嗯，两个位置
-    p=Hash( Key, H->TableSize );
-    //呃，什么鬼，没有冲突处理的哈希函数
-    //你要清楚它是怎么添加的
-    if(H->Cells[p].Data==Key||H->Cells[p].Info==Empty)
-    //为什么信息要说是空呢？
-    //是两者有一个成立就成，如果为空那么也返回，返回什么呢？
-        return p;
-    else
-    {
-        for(int i=1;i<H->TableSize;i++)//它小于最大长度
-        {
-            m=(p+i)%H->TableSize;
-            if(H->Cells[m].Data==Key||H->Cells[m].Info==Empty)
-            //只要是这样就会成立，嗯
-                return  m;
+    Position p,m;
+    p = m = Key % H->TableSize;
+    for(int i=0; i<H->TableSize; i++){
+        if(H->Cells[m].Data==Key ||
+            H->Cells[m].Info==Empty){
+                return m;
+        }else{
+            m = (p+i)%H->TableSize; 
         }
-        //东西很简单，但是代码不懂
-        return ERROR;
     }
+    return ERROR;
 }

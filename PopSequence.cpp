@@ -6,15 +6,15 @@ int main(){
     int m, n, k;//栈最大容量，数的长度，数列的数量
     cin >> m >> n >> k;
     int ar[1000];
-    std::stack<int> s;
     for(int i=0; i<k; i++){
-        for(int j=0; i<n; j++){
-            cin >> ar[i];
+        for(int j=0; j<n; j++){
+            cin >> ar[j];    
         }//输入完毕
         int now = 0;//代表每次检查弹出的数据
         int idx = 1;//代表初始队列，既然是顺序排列，那么就简化了
         bool res = true;//结果
-        for(int i=0; i<n; i++){
+        std::stack<int> s;
+        for(int h=0; h<n; h++){
             int t = ar[now];
             if(s.empty()||s.top()!=t){//说明没有在栈里
                 //没有在栈里那么就直到压入栈为止
@@ -26,12 +26,15 @@ int main(){
                         break;
                     }
                 }
-                if(idx==n+1){//说明全压进去了但是还是
-                    //没有成功，说明是被掩盖了
+                if(idx==n+1){//说明全压进去了但是还是//没有成功，说明是被掩盖了
                     res = false;
                     break;
                 }
                 s.push(idx++);//那么现在就在了
+                if(s.size()>m){//大于堆栈长度，溢出
+                    res = false;
+                    break;
+                }
             }
             s.pop();
             now++;
@@ -41,3 +44,5 @@ int main(){
     }
     return 0;
 }
+//5 7 1
+//5 6 4 3 7 2 1
