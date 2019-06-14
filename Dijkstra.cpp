@@ -6,15 +6,20 @@ using namespace std;
 // 输入数据是二维矩阵，且全连通
 // 输出是一个一维矩阵，里面放着点到点的最小值
 // 采用遍历最小的方法
-int p[5][5] = {
-    {0, 4, INF, 2, INF},
-    {4, 0, 4, 1, INF},
-    {INF, 4, 0, 1, 3},
-    {2, 1, 1, 0, 7},
-    {INF, INF, 3, 7, 0}
+int p[9][9] = {
+    {0,3,INF,3,INF,INF,INF,INF,INF}, // 1
+    {3,0,3,INF,2,INF,INF,INF,INF}, // 2
+    {INF,3,0,INF,INF,4,INF,INF,INF}, // 3
+    {1,INF,INF,0,3,INF,3,INF,INF}, // 4
+    {INF,2,INF,3,0,3,INF,3,INF}, // 5
+    {INF,INF,4,INF,3,0,INF,INF,5}, // 6
+    {INF,INF,INF,3,INF,INF,0,4,INF}, // 7
+    {INF,INF,INF,INF,5,INF,4,0,2}, // 8
+    {INF,INF,INF,INF,INF,6,INF,2,0}, // 9
 };
-bool f[5] = {1, 0, 0, 0, 0};
-int r[5] = {0, INF, INF, INF, INF};
+
+bool f[9] = {1, 0, 0, 0, 0, 0, 0, 0, 0};
+int r[9] = {0, INF, INF, INF, INF, INF, INF, INF, INF};
 // 判断有没有空
 bool isEmpty(){
     bool res = true;

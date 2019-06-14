@@ -1,1 +1,14 @@
-CNT DATA, 
+CNT DATA,自动化计数
+真的不v哦，sinefffaeffaefefaeffaefefefef
+
+
+efeffeefefefefefefefefeeefewfefegegw
+ewgewfewefefefef
+interesting面（
+IS（觉得佛i额我发
+KOKDJ破二分
+PJfjepwjfa
+psejfejfefopejfopejfpoejfpjoefpejfepjfoefffffffffff
+
+
+
