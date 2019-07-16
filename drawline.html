@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>draw</title> 
+    </head>
+    <body>
+        <canvas id="myCanvas" width="2000" height="2000" />
+    </body>
+    <script>
+    function draw(m, n, x0, y0, x1, y1){
+        var c=document.getElementById("myCanvas"); // 获得画布
+        var old_y = 0; // 过去的值
+        var new_y = 0;
+        step_y = 0; // 步进的方块y
+        for(var i=0; i<m; i++){ // 进行画格子
+            new_y = line_y(x0, y0, x1, y1, i*10); // 获得解
+            if(existInteger(old_y, new_y)){step_y+=1;}
+            for(var j=0; j<n; j++){ // 画一列方块
+                var ctx=c.getContext("2d");     
+                ctx.fillStyle="#000000"; // 填充黑色
+                ctx.fillRect(10*i,10*j,10,10); // 画黑色背景
+                if(j == step_y){ctx.fillStyle="grey";} // 灰色
+                else{ctx.fillStyle="#ffffff";} // 填充白色
+                ctx.fillRect(10*i+1,10*j+1,9,9); // 填充前景显示
+            }
+            old_y = new_y;
+        }
+        var ctx=c.getContext("2d"); // 画出直线
+        ctx.moveTo(x0,y0);
+        ctx.lineTo(x1,y1);
+        ctx.stroke();
+    }
+    function line_y(x0, y0, x1, y1, x2){
+        return (x2-x1)/(x0-x1)*y0 + (x2-x0)/(x1-x0)*y1;
+    }
+    function existInteger(old_y, new_y){
+        for(var i=0; i<10000; i++){
+            if(i*10>old_y && i*10<=new_y) return true;
+        }
+        return false;
+    }
+
+    // 每个格子 10px * 10px
+    draw(40, 40, 0*10, 0*10, 40*10, 126);
+
+    </script>
+</html>

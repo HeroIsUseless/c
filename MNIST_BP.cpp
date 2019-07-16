@@ -92,43 +92,6 @@ public:
                 int j = rand() % 60000;
                 forward(*(mn_img.images[j]));
                 e_t = backward(mn_lab.labels[j]);
-                // //TODO:
-                // if(i<5) 
-                // {
-                //     cout<<"________________________"<<endl;
-                //     cout<<"result:"<<result(output_layer.a)<<"  correct:"<<mn_lab.labels[j]+0<<endl;
-                //     for(int k=0; k<10; k++)
-                //     {
-                //         cout<<output_layer.a[k]<<"         ";
-                //         if(k == mn_lab.labels[j]) cout<<"1"<<endl;
-                //         else cout<<"0"<<endl;
-                //     } 
-                //     //for(int k=0; k<10; k++) cout<<output_layer.z[k]<<endl;
-                //     //cout<<endl<<"hidden_a:"<<endl;
-
-                //     // for(int k=0; k<10; k++){
-                //     //     cout<<endl<<"net"<<k<<":"<<endl;
-                //     //     for(int g=0; g<HIDDEN_NODE_COUNT; g++){
-                //     //         cout<<output_layer.w[i][j]<<" ";
-                //     //     }
-                //     //     cout<<endl;
-                //     // }
-
-                //     // for(int k=0; k<10; k++) //TODO:w值
-                //     // {
-                //     //     cout<<endl<<"w"<<k<<":"<<endl;
-                //     //     for(int g=0; g<HIDDEN_NODE_COUNT; g++){
-                //     //         cout<<output_layer.w[k][g]<<" ";
-                //     //     }
-                //     //     cout<<endl;
-                //     // }
-                //     cout<<endl<<"b:"<<endl;
-                //     for(int k=0; k<10; k++) cout<<output_layer.b[k]<<endl;
-                //     if(i<10) cout<<endl<<"loss: "<<e_t<<endl;
-
-                // }
-                // //if(i<10) cout<<endl;
-                // //TODO:
             }
             e_t /= 100;
             step++;

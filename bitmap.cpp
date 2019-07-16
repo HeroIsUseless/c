@@ -100,14 +100,28 @@ class Bitmap{
         }
         for(int i=0; i<height; i++){
             for(int j=0; j<width; j++){
-                if((*(imagedata + i * width + j)).red<=200 && 
-                   (*(imagedata + i * width + j)).blue<=200 &&
-                   (*(imagedata + i * width + j)).green<=200){
+                if((*(imagedata + i * width + j)).red<=250 && 
+                   (*(imagedata + i * width + j)).blue<=250 &&
+                   (*(imagedata + i * width + j)).green<=250){
                        (*(tid + i * width + j)).red=0;
                        (*(tid + i * width + j)).green=0;
-                       (*(tid + i * width + j)).blue=255;
+                       int color_t = (*(imagedata + i * width + j)).blue+200;
+                       if(color_t < 255)
+                        (*(tid + i * width + j)).blue=color_t;
+                        else
+                        {
+                            (*(tid + i * width + j)).red=(*(imagedata + i * width + j)).red;
+                            (*(tid + i * width + j)).green=(*(imagedata + i * width + j)).green;
+                            (*(tid + i * width + j)).blue=255;
+                        }
+                        
                 }
             }
+
+//0->200 黑色-深蓝-浅蓝
+
+//155->255 深蓝-浅蓝
+
         }
         FILE* fp;
         if((fp=fopen(filepath,"wb"))==NULL)
