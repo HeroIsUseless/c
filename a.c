@@ -1,8 +1,7 @@
 #include <stdio.h>
-#include <windows.h>
-#include <time.h>
 int main(){
-    int i = 5;
-    printf("Heello world!\n");
+    int i = 0;
+    scanf("%d", &i);
+    printf("%d", i);
     return 0;
 }
