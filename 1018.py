@@ -1,68 +1,59 @@
-class People:
-    win = 0
-    equal = 0
-    lose = 0
-    B = 0
-    C = 0
-    J = 0
-
-
-lA = People()
-lB = People()
-
-def theBiggestOne(people):
-    dic = {}
-    dic['B'] = people.B
-    dic['C'] = people.C
-    dic['J'] = people.J
-    sorted(dic.items(), key=lambda x:x[0], reverse = False)
-    sorted(dic.items(), key=lambda x:x[1], reverse = True)
-    return list(dic.items())[0][0]
-
-
 def Fight(A, B):
-    if A == "B":
+    if A == "B": 
         if B == "B":
-            lA.equal += 1
-            lB.equal += 1
+            return 0
         if B == "J":
-            lA.lose += 1
-            lB.win += 1
-            lB.J += 1
+            return "yi"
         if B == "C":
-            lA.win += 1
-            lB.lose += 1
-            lA.B += 1
-    if A == "J":
+            return "jia"
+    if A == "J": 
         if B == "B":
-            lA.win += 1
-            lB.lose += 1
-            lA.J += 1
+            return "jia"
         if B == "J":
-            lA.equal += 1
-            lB.equal += 1
+            return 0
         if B == "C":
-            lA.lose += 1
-            lB.win += 1
-            lB.C += 1
-    if A == "C":
+            return "yi"
+    if A == "C": 
         if B == "B":
-            lA.lose += 1
-            lB.win += 1
-            lB.B += 1
+            return "yi"
         if B == "J":
-            lA.win += 1
-            lB.lose += 1
-            lA.C += 1
+            return "jia"
         if B == "C":
-            lA.equal += 1
-            lB.equal += 1
+            return 0
+
 
 N = int(input())
-while N > 0:
+win_jia = {'C':0, 'J':0, 'B':0}
+win_yi = {'C':0, 'J':0, 'B':0}
+for i in range(0, N):
     a, b = map(str, input().split(" "))
-    Fight(a, b)
-    N -= 1
-print("%d %d %d" % (lA.win, lA.equal, lA.lose))
-print("%d %d %d" % (lB.win, lB.equal, lB.lose))
-print("%s %s\n" % (theBiggestOne(lA), theBiggestOne(lB)))
+    win_t = Fight(a, b)
+    if win_t == "jia":
+        win_jia[a] += 1
+    elif win_t == "yi":
+        win_yi[b] += 1
+    else:
+        pass
+        
+win = win_jia['C']+win_jia['J']+win_jia['B']
+los = win_yi['C']+win_yi['J']+win_yi['B']
+equ = N-win-los
+print("%d %d %d" % (win, los, equ))
+print("%d %d %d" % (los, win, equ))
+ges_jia = 'B'
+if win_jia['B'] < win_jia['C']:
+    ges_jia = 'C'
+    if win_jia['C'] < win_jia['J']:
+        ges_jia = 'J'
+elif win_jia['B'] < win_jia['J']:
+    ges_jia = 'J'
+
+ges_yi = 'B'
+if win_yi['B'] < win_yi['C']:
+    ges_yi = 'C'
+    if win_yi['C'] < win_yi['J']:
+        ges_yi = 'J'
+elif win_yi['B'] < win_yi['J']:
+    ges_yi = 'J'
+
+print("%s %s" % (ges_jia, ges_yi))
