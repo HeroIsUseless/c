@@ -16,7 +16,7 @@ void print(LinkStack head){
 	printf("\n");
 }
 
-// ¼Ó·¨
+// ï¿½Ó·ï¿½
 void Sum(LinkStack head1,LinkStack head2)
 {
     StackNode *top1, *top2;
@@ -31,17 +31,17 @@ void Sum(LinkStack head1,LinkStack head2)
         }
         top1=top1->prior; top2=top2->prior;
     }
-    if(top1 == head1 && top2 != head2){ // Èç¹ûÊÇ1ÏÈ½áÊø£¬ÄÇÃ´¾Í×ªÒÆÁ´±í
+    if(top1 == head1 && top2 != head2){ // ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         top1=top1->next;
         head1->next = head2->next;
         top1->prior = top2->prior;
     }
-    //Êä³ö´ð°¸
+    //ï¿½ï¿½ï¿½ï¿½ï¿½
     print(head1);
 }
 
 void Min(LinkStack head1,LinkStack head2)
-{//¼õ·¨
+{//ï¿½ï¿½ï¿½ï¿½
     StackNode *top1, *top2;
     top1=head1; top2=head2;
     while(top1->next!=NULL)top1=top1->next;
@@ -54,7 +54,7 @@ void Min(LinkStack head1,LinkStack head2)
         }
         top1=top1->prior; top2=top2->prior;
     }
-    if(top1 == head1 && top2 != head2){ // Èç¹ûÊÇ1ÏÈ½áÊø£¬ÄÇÃ´¾Í×ªÒÆÁ´±í£¬È»ºó¼ÌÐø²Ù×÷
+    if(top1 == head1 && top2 != head2){ // ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         head1->next = head2->next;
         top1->prior = top2->prior;
         while(top1 != head1){
@@ -66,7 +66,7 @@ void Min(LinkStack head1,LinkStack head2)
             top1=top1->prior;
         }
     }
-    //Êä³ö´ð°¸
+    //ï¿½ï¿½ï¿½ï¿½ï¿½
     print(head1);
 }
 

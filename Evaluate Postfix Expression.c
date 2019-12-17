@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-//ºó×º±í´ïÊ½¼ÆËã£¬µ±ÊäÈëµÄÊý±È²Ù×÷·û´óÒ»Ê±£¬¿ªÊ¼Ö´ÐÐ¼ÆËã£¬°üÀ¨´íÎó´¦Àí
+//ï¿½ï¿½×ºï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ê±ï¿½ï¿½ï¿½ï¿½Ê¼Ö´ï¿½Ð¼ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 typedef double ElementType;
 #define Infinity 1e8
 #define Max_Expr 30   /* max size of expression */
@@ -25,15 +25,15 @@ int main()
 /* Your function will be put here */
 ElementType EvalPostfix( char *expr )
 {
-    ElementType SN[Max_Expr]={0}; int Ntop = 0;//Ö¸ÏòÍ·µÄÖ¸Õë£¬´Ó0¿ªÊ¼£¬Í·Ö¸ÕëÖ¸ÏòÎª¿Õ
-    float ft; int isDot; float dot;//ÁÙÊ±±äÁ¿
-    //¶ÁÈ¡×Ö·û´®
+    ElementType SN[Max_Expr]={0}; int Ntop = 0;//Ö¸ï¿½ï¿½Í·ï¿½ï¿½Ö¸ï¿½ë£¬ï¿½ï¿½0ï¿½ï¿½Ê¼ï¿½ï¿½Í·Ö¸ï¿½ï¿½Ö¸ï¿½ï¿½Îªï¿½ï¿½
+    float ft; int isDot; float dot;//ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
+    //ï¿½ï¿½È¡ï¿½Ö·ï¿½ï¿½ï¿½
     while(*expr != 0)
     {
-        if(*expr>='0' && *expr<='9')//×ª»»Êý×Ö²¢Ñ¹ÈëÊý×Ö
+        if(*expr>='0' && *expr<='9')//×ªï¿½ï¿½ï¿½ï¿½ï¿½Ö²ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             ft = 0.0;
-            isDot = 0;//ÊÇ·ñ³öÏÖÁËÐ¡Êýµã
+            isDot = 0;//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½
             dot = 1;
             while(*expr != ' ' && *expr != '\0')
             {
@@ -51,7 +51,7 @@ ElementType EvalPostfix( char *expr )
             }
             SN[Ntop++] = ft;
         }
-        if(*expr=='+' || *expr=='*' || *expr=='/')//ÅÐ¶ÏÔËËã·û²¢¿ªÊ¼¼ÆËã
+        if(*expr=='+' || *expr=='*' || *expr=='/')//ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
         {
             if(Ntop < 2)
                 return Infinity;
@@ -75,7 +75,7 @@ ElementType EvalPostfix( char *expr )
                     break;
             }
         }
-        if(*expr=='-')//µ¥¶ÀÇø·ÖÊÇ¸ºÊý£¨Ñ¹ÈëÕ»£©»¹ÊÇ¼õºÅ£¨½øÐÐÔËËã£©
+        if(*expr=='-')//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½Ç¼ï¿½ï¿½Å£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£©
         {
             if(*(expr+1)==' '|| *(expr+1)=='\0')
             {
@@ -85,9 +85,9 @@ ElementType EvalPostfix( char *expr )
             }
             else
             {
-                expr++;//½øÈëÊý×Ö²¿·Ö
+                expr++;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö²ï¿½ï¿½ï¿½
                 ft = 0.0;
-                isDot = 0;//ÊÇ·ñ³öÏÖÁËÐ¡Êýµã
+                isDot = 0;//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½
                 while(*expr != ' ' && *expr != '\0')
                 {
                     if(*expr == '.'){isDot = 1; expr++; continue;}
@@ -105,7 +105,7 @@ ElementType EvalPostfix( char *expr )
                 SN[Ntop++] = -ft;
             }
         }
-        expr++;//¿Õ¸ñ½øÎ»
+        expr++;//ï¿½Õ¸ï¿½ï¿½Î»
     }
     if(Ntop > 1) return Infinity;
     else return SN[0];

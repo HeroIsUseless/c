@@ -6,8 +6,8 @@ typedef struct AVLNode *PtrToAVLNode;
 struct AVLNode
 {
     int Key;            //值
-    PtrToAVLNode Left;  //左孩子
-    PtrToAVLNode Right; //右孩子
+    PtrToAVLNode Left;  //左子节点
+    PtrToAVLNode Right; //右子节点
     int Height;         //只做高度用
 };
 typedef PtrToAVLNode AVLTree;
